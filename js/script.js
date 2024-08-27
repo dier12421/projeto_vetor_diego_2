@@ -3,40 +3,23 @@ meuFormulario.addEventListener("submit", function(event) {
   event.preventDefault();
 
   adicionarValor();
-  inverterVetor();
   mostrarPares();
 });
 
-let vetor = [];
+let vetor = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-function adicionarValor() {
-  const valor = Number(document.getElementById('valor').value);
-  vetor.push(valor);
+  function inverterVetor() {
+    vetor.reverse();
 
-  const tabela = document.getElementById('tabelaValores').getElementsByTagName('tbody')[0];
-  const novalinha = tabela.insertRow();
-  const celula = novalinha.insertCell();
-  celula.textContent = valor;
+    const tabela = document.getElementById('tabelaValores').getElementsByTagName('tbody')[0];
+    tabela.innerHTML = ''; // Limpa a tabela antes de adicionar os valores invertidos
 
-  document.getElementById('valor').value = '';
-}
-
-function inverterVetor() {
-  vetor.reverse(); // Inverte a ordem dos elementos do vetor
-}
-
-function mostrarPares() {
-  const tabela = document.getElementById("tabelaPares").getElementsByTagName("tbody")[0];
-
-  // Limpa a tabela antes de adicionar novos valores
-  tabela.innerHTML = '';
-
-  for (let i = 0; i < vetor.length; i++) {
-    const valor = vetor[i];
-    if (valor % 2 === 0) {
-      const linha = tabela.insertRow();
-      const celula = linha.insertCell();
+    for (let i = 0; i < vetor.length; i++) {
+      const valor = vetor[i];
+      const novalinha = tabela.insertRow();
+      const celula = novalinha.insertCell();
       celula.textContent = valor;
     }
   }
-}
+
+  inverterVetor();
